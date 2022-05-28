@@ -33,20 +33,20 @@ namespace EventSourcing.Api.EventStores
             });
         }
 
-        public void PriceChanged(BookPriceChangedEvent bookPriceChangedEvent)
+        public void PriceChanged(ChangeBookPriceDto changeBookPriceDto)
         {
             Events.AddLast(new BookPriceChangedEvent
             {
-                Id = bookPriceChangedEvent.Id,
-                NewPrice = bookPriceChangedEvent.NewPrice,
+                Id = changeBookPriceDto.Id,
+                NewPrice = changeBookPriceDto.NewPrice,
             });
         }
 
-        public void Deleted(BookDeletedEvent bookDeletedEvent)
+        public void Deleted(Guid Id)
         {
             Events.AddLast(new BookDeletedEvent
             {
-                Id = bookDeletedEvent.Id
+                Id = Id
             });
         }
     }
