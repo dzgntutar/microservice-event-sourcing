@@ -1,3 +1,4 @@
+using EventSourcing.Api.EventStores;
 using EventStore.ClientAPI;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,8 @@ builder.Services.AddSwaggerGen();
 var connection = EventStoreConnection.Create(builder.Configuration.GetConnectionString("EventStore"));
 await connection.ConnectAsync();
 builder.Services.AddSingleton(connection);
+
+builder.Services.AddSingleton<BookStream>();
 
 
 var app = builder.Build();
