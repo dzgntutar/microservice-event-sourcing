@@ -1,5 +1,7 @@
 using EventSourcing.Api.EventStores;
 using EventStore.ClientAPI;
+using MediatR;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,8 @@ await connection.ConnectAsync();
 builder.Services.AddSingleton(connection);
 
 builder.Services.AddSingleton<BookStream>();
+
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 
 
 var app = builder.Build();
