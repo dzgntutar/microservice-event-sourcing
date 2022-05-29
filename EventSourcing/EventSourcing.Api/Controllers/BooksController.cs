@@ -17,6 +17,7 @@ namespace EventSourcing.Api.Controllers
             _mediator = mediator;
         }
 
+        [HttpPost]
         public async Task<IActionResult> Create(CreateBookDto createBookDto)
         {
             await _mediator.Send(new CreateBookCommand { CreateBookDto= createBookDto});
