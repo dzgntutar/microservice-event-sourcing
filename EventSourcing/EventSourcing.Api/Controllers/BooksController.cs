@@ -1,5 +1,6 @@
 ﻿using EventSourcing.Api.Commands;
 using EventSourcing.Api.Dtos;
+using EventSourcing.Api.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,13 @@ namespace EventSourcing.Api.Controllers
         public BooksController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            return Ok(await _mediator.Send(new GetAllBookQuery()));
         }
 
         [HttpPost]
