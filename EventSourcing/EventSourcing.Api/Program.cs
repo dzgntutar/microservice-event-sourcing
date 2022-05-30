@@ -1,3 +1,4 @@
+using EventSourcing.Api.BackgroundServices;
 using EventSourcing.Api.EventStores;
 using EventStore.ClientAPI;
 using MediatR;
@@ -18,6 +19,7 @@ builder.Services.AddSingleton<BookStream>();
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 
+builder.Services.AddHostedService<BookReadEventStore>();
 
 var app = builder.Build();
 

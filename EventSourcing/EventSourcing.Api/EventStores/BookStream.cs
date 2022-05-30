@@ -7,6 +7,8 @@ namespace EventSourcing.Api.EventStores
     public class BookStream : AbstractStream
     {
         public static string StreamName => "BookStream";
+        public static string GroupName => "firstgroup";
+
         public BookStream( IEventStoreConnection eventStoreConnection) : base(StreamName, eventStoreConnection)
         {
         }

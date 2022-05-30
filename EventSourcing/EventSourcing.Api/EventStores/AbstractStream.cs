@@ -34,6 +34,5 @@ namespace EventSourcing.Api.EventStores
 
             Events.Clear();
         }
-
     }
 }
